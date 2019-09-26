@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
 /**
  * TIPS: antigamente soh era possivel trabalhar com estado no react quando usado
@@ -54,10 +54,26 @@ function App() {
    */
   const techSize = useMemo(() => tech.length, [tech]);
 
+  /**
+   * Essa funcao eh executada toda vez que ha uma alteracao nos estados citados,
+   * logo pode vir a consumir processamento do javascript, como solucao pode-se usar
+   * o hook useCallback()
+   */
+  /*
   function handleAdd() {
     setTech([...tech, newTech]); // Pega os estado de tech no primeiro argumento e adiciona o novo estado no segundo argumento
     setNewTech(''); // Limpa o estado para deixar o input vazio
   }
+  */
+
+  /**
+   * O useCallback eh como o useMemo, no entanto, este nao retorna um unico valor,
+   * mas uma funcao.
+   */
+  const handleAdd = useCallback(() => {
+    setTech([...tech, newTech]); // Pega os estado de tech no primeiro argumento e adiciona o novo estado no segundo argumento
+    setNewTech(''); // Limpa o estado para deixar o input vazio
+  }, [newTech, tech]);
 
   return (
     <>
