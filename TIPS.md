@@ -16,6 +16,7 @@
 5. Instalar o Prettier como uma dependencia de desenvolvimento
    `yarn add prettier -D`
    `yarn add eslint-config-prettier -D`
+   `yarn add eslint-plugin-prettier -D`
 
 6. Usa o esLint para avisar se estamos usando os Hooks de forma errada
    `yarn add eslint-plugin-react-hooks -D`
